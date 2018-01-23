@@ -15,7 +15,7 @@ SRCS_DIR = ./srcs/
 INCLUDES = ./includes/
 RM = /bin/rm -f
 
-FILES = 
+FILES = filler
 CFILES = $(patsubst %, $(SRCS_DIR)%.c, $(FILES))
 OFILES = $(patsubst %, %.o, $(FILES))
 CFLAGS = -Wall -Wextra -Werror
