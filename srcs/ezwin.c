@@ -25,9 +25,9 @@ int     token_checker(t_fill *ted, t_maptemp *h, int token_x, int token_y)
     X = token_x + h->norm_x;
     Y = token_y + h->norm_y;
     if (X < 0 || X >= ted->col  || Y < 0 || Y >= ted->row ||
-    ted->map[X][Y] == ted->enemy || ted->map[X][Y] == ted->enemy - 32)
+    ted->map[Y][X] == ted->enemy || ted->map[Y][X] == ted->enemy - 32)
         return (0);
-    if (ted->map[X][Y] == ted->player || ted->map[X][Y] == ted->player - 32)
+    if (ted->map[Y][X] == ted->player || ted->map[Y][X] == ted->player - 32)
         h->connection++;
     h->run++;
     return (1);
