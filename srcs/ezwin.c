@@ -17,10 +17,10 @@ int     token_checker(t_fill *ted, t_maptemp *h, int token_x, int token_y)
     int X;
     int Y;
 
-    if (run == 0)
+    if (h->run == 0)
     {
         h->norm_x = h->map_x - token_x;
-        y->norm_y = h->map_y - token_y;
+        h->norm_y = h->map_y - token_y;
     }
     X = token_x + h->norm_x;
     Y = token_y + h->norm_y;
@@ -29,7 +29,7 @@ int     token_checker(t_fill *ted, t_maptemp *h, int token_x, int token_y)
         return (0);
     if (ted->map[X][Y] == ted->player || ted->map[X][Y] == ted->player - 32)
         h->connection++;
-    run++;
+    h->run++;
     return (1);
 }
 
@@ -59,9 +59,59 @@ int     valid_placement(t_fill *ted, t_maptemp *h)
     return (1);
 }
 
+void    calc_dist(t_maptemp *h, int enemy_x, int enemy_y, int *tempDist)
+{
+    int tmp;
+
+    tmp = ((h->map_x - enemy_x) * (h->map_x - enemy_x)) +
+    ((h->map_y - enemy_y) * (h->map_y - enemy_y));
+    if (tmp < *tempDist)
+        *tempDist = tmp;
+}
+
+int     closest_distance(t_fill *ted, t_maptemp *h)
+{
+    int i;
+    int n;
+    int tempDistance;
+
+    tempDistance = 999999999;
+    n = 0;
+    i = 0;
+    while (ted->map[n])
+    {
+        while (ted->map[n][i])
+        {
+            if (ted->map[n][i] == ted->enemy || ted->map[n][i] == ted->enemy - 32)
+                calc_dist(h, i, n, &tempDistance);
+            i++;
+        }
+        i = 0;
+        n++;
+    }
+    return (tempDistance);
+}
+
 void    losing_alg(t_fill *ted, t_maptemp *h)
 {
+    int tmp;
 
+    if (ted->distance == 0)
+    {
+        ted->X = h->map_x;
+        ted->Y = h->map_y;
+        ted->distance = closest_distance(ted, h);
+    }
+    else
+    {
+        tmp = closest_distance(ted, h);
+        if (tmp < ted->distance)
+        {
+            ted->X = h->map_x;
+            ted->Y = h->map_y;
+            ted->distance = tmp; 
+        }
+    }
 }
 
 void    pls_win(t_fill *ted, int map_x, int map_y)
@@ -76,6 +126,14 @@ void    pls_win(t_fill *ted, int map_x, int map_y)
         losing_alg(ted, h);
 }
 
+void    ft_put_coordinates(t_fill *ted)
+{
+        ft_putnbr(ted->X);
+        write(1, " ", 1);
+        ft_putnbr(ted->Y);
+        write(1, "\n", 1);
+}
+
 /*
 ** A distance of zero means none of the pieces can be placed. 
 */
@@ -87,9 +145,9 @@ void    ez_win(t_fill *ted)
     i = 0;
     n = 0;
     ted->distance = 0;
-    while (ted->arr[n])
+    while (ted->map[n])
     {
-        while (ted->arr[n][i])
+        while (ted->map[n][i])
         {
             pls_win(ted, i, n);
             i++;
@@ -99,12 +157,4 @@ void    ez_win(t_fill *ted)
     }
     if (ted->distance != 0)
         ft_put_coordinates(ted);
-}
-
-void    ft_put_coordinates(t_fill *ted)
-{
-        ft_putnbr(ted->X);
-        write(1, " ", 1);
-        ft_putnbr(ted->Y);
-        write(1, "\n", 1);
 }

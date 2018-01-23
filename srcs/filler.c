@@ -107,6 +107,7 @@ void    player_and_size(int fd, t_fill *ted)
     line = 0;
     get_next_line(fd, &line);
     ted->player = (line[10] == '1' ? 'o' : 'x');
+	ted->enemy = (line[10] == '1' ? 'x' : 'o');
     get_next_line(fd, &line);
     while (!(*line >= '0' && *line <= '9'))
         line++;
@@ -124,20 +125,8 @@ int main(int argc, char **argv)
     ted = malloc(sizeof(t_fill));
     player_and_size(fd = open(argv[1], O_RDONLY), ted);
     board(fd, ted);
+	ez_win(ted);
     close(fd);
-	int i = 0;
-	int n = 0;
-	while (ted->map[n])
-	{
-		ft_putstr(ted->map[n++]);
-		write(1, "\n", 1);
-	}
-	write(1, "\n", 1);
-	while (ted->token[i])
-	{
-		ft_putstr(ted->token[i++]);
-		write(1, "\n", 1);
-	}
     //free line and ted
     return (0);
 }
