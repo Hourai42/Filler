@@ -18,3 +18,5 @@ would you stop after every single turn and wait for more input? The tricky part 
 5. Update the map, revise the token everytime, and do whatever needs to be done.
 
 This is much more tricky than you initially expected-- let's study other people's code and see how it's done. 
+
+Then after, fork the project and merge with yours when you're ready. 
