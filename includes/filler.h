@@ -14,27 +14,31 @@
 # define FILLER_H
 # include <libft.h>
 
+typedef struct  s_maptemp
+{
+    int map_x;
+    int map_y;
+    int norm_x;
+    int norm_y;
+    int run;
+    int connection;
+}               t_maptemp;
+
 typedef struct s_fill
 {
     char player;
+    char enemy;
     char **map;
     char **token;
-    struct s_tc *stars;
     int distance;
     int row;
     int col;
+    int X;
+    int Y;
+    struct s_maptemp *ptr;
 }   t_fill;
 
-/*
-** The coordinates of each token's *. 
-*/
-typedef struct s_tc
-{
-    int x;
-    int y;
-    struct s_tc *next;
-}       t_tc;
-
 int main(int argc, char **argv);
+void    ez_win(t_fill *ted);
 
 #endif
