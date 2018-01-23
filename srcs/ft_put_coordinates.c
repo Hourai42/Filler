@@ -14,8 +14,8 @@
 
 void	ft_put_coordinates(t_fill *ted)
 {
-	ft_putnbr(ted->X);
+	ft_putnbr(ted->x);
 	write(1, " ", 1);
-	ft_putnbr(ted->Y);
+	ft_putnbr(ted->y);
 	write(1, "\n", 1);
 }

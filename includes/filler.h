@@ -38,7 +38,7 @@ typedef struct			s_fill
 	struct s_maptemp	*ptr;
 }						t_fill;
 
-int						main(int argc, char **argv);
+int						main(void);
 int						p_atoi(char **line);
 void					board(int fd, t_fill *ted);
 void					player_and_size(int fd, t_fill *ted);

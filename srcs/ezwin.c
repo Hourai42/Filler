@@ -52,8 +52,8 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 
 	if (ted->distance == 0)
 	{
-		ted->X = h->map_x;
-		ted->Y = h->map_y;
+		ted->x = h->map_x;
+		ted->y = h->map_y;
 		ted->distance = closest_distance(ted, h);
 	}
 	else
@@ -61,8 +61,8 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 		tmp = closest_distance(ted, h);
 		if (tmp < ted->distance)
 		{
-			ted->X = h->map_x;
-			ted->Y = h->map_y;
+			ted->x = h->map_x;
+			ted->y = h->map_y;
 			ted->distance = tmp;
 		}
 	}

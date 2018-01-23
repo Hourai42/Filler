@@ -12,16 +12,13 @@
 
 #include "filler.h"
 
-int			main(int argc, char **argv)
+int			main(void)
 {
 	t_fill	*ted;
-	int		fd;
 
-	argc = 0;
 	ted = malloc(sizeof(t_fill));
-	player_and_size(fd = open(argv[1], O_RDONLY), ted);
-	board(fd, ted);
+	player_and_size(STDIN_FILENO, ted);
+	board(STDIN_FILENO, ted);
 	ez_win(ted);
-	close(fd);
 	return (0);
 }
