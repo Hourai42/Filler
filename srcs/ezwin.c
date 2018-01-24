@@ -28,7 +28,7 @@ static int		closest_distance(t_fill *ted, t_maptemp *h)
 	int			n;
 	int			tempdistance;
 
-	tempdistance = 999999999;
+	tempdistance = 2000000000;
 	n = 0;
 	i = 0;
 	while (ted->map[n])
@@ -50,7 +50,7 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 {
 	int			tmp;
 
-	if (ted->distance == 0)
+	if (ted->distance == 999999999)
 	{
 		ted->x = h->map_x;
 		ted->y = h->map_y;
@@ -68,14 +68,10 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 	}
 }
 
-static void		pls_win(t_fill *ted, int map_x, int map_y)
+static void		pls_win(t_fill *ted, int map_x, int map_y, t_maptemp *h)
 {
-	t_maptemp	*h;
-
-	h = malloc(sizeof(t_maptemp));
 	h->map_x = map_x;
 	h->map_y = map_y;
-	ted->ptr = h;
 	if (valid_placement(ted, h) == 1)
 		losing_alg(ted, h);
 }
@@ -88,21 +84,24 @@ int				ez_win(t_fill *ted)
 {
 	int			i;
 	int			n;
+	t_maptemp	*h;
 
 	i = 0;
 	n = 0;
-	ted->distance = 0;
+	h = malloc(sizeof(t_maptemp));
+	ted->ptr = h;
+	ted->distance = 999999999;
 	while (ted->map[n])
 	{
 		while (ted->map[n][i])
 		{
-			pls_win(ted, i, n);
+			pls_win(ted, i, n, h);
 			i++;
 		}
 		i = 0;
 		n++;
 	}
-	if (ted->distance != 0)
+	if (ted->distance != 999999999)
 	{
 		ft_put_coordinates(ted);
 		return (1);

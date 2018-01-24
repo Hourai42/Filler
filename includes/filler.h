@@ -20,7 +20,6 @@ typedef struct			s_maptemp
 	int					map_y;
 	int					norm_x;
 	int					norm_y;
-	int					run;
 	int					connection;
 }						t_maptemp;
 

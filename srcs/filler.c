@@ -12,6 +12,14 @@
 
 #include "filler.h"
 
+static void	fuckyeah(void)
+{
+	ft_putnbr(0);
+	write(1, " ", 1);
+	ft_putnbr(0);
+	write(1, "\n", 1);
+}
+
 int			main(void)
 {
 	t_fill	*ted;
@@ -34,5 +42,6 @@ int			main(void)
 	free(p);
 	freeall(ted);
 	free(ted);
+	fuckyeah();
 	return (0);
 }
