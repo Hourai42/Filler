@@ -12,17 +12,17 @@
 
 #include "filler.h"
 
-void    freeall(t_fill *ted)
+void	freeall(t_fill *ted)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    free(ted->ptr);
-    while (ted->map[i])
-        free(ted->map[i++]);
-    free(ted->map);
-    i = 0;
-    while (ted->token[i])
-        free(ted->token[i++]);
-    free(ted->token);
+	i = 0;
+	free(ted->ptr);
+	while (ted->map[i])
+		free(ted->map[i++]);
+	free(ted->map);
+	i = 0;
+	while (ted->token[i])
+		free(ted->token[i++]);
+	free(ted->token);
 }

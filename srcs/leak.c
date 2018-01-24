@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static void		calc_dist(t_maptemp *h, int enemy_x, int enemy_y, int *tempdist)
+static void	calc_dist(t_maptemp *h, int enemy_x, int enemy_y, int *tempdist)
 {
 	int		tmp;
 
@@ -29,15 +29,15 @@ static void	leak(t_fill *ted, int token_x, int token_y)
 		ted->ptr->norm_x = ted->ptr->map_x - token_x;
 		ted->ptr->norm_y = ted->ptr->map_y - token_y;
 	}
-		ted->ptr->starposx = ted->ptr->norm_x + token_x;
-		ted->ptr->starposy = ted->ptr->norm_y + token_y;
+	ted->ptr->starposx = ted->ptr->norm_x + token_x;
+	ted->ptr->starposy = ted->ptr->norm_y + token_y;
 	ted->ptr->run++;
 }
 
-void	leak_token(t_fill *ted, int enemy_x, int enemy_y, int *tempdist)
+void		leak_token(t_fill *ted, int enemy_x, int enemy_y, int *tempdist)
 {
-	int i;
-	int n;
+	int		i;
+	int		n;
 
 	i = 0;
 	n = 0;

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static void	fuckyeah(void)
+static void		fuckyeah(void)
 {
 	ft_putnbr(0);
 	write(1, " ", 1);
@@ -20,14 +20,14 @@ static void	fuckyeah(void)
 	write(1, "\n", 1);
 }
 
-int			main(void)
+int				main(void)
 {
-	t_fill	*ted;
-	t_player *p;
+	t_fill		*ted;
+	t_player	*p;
 
 	p = malloc(sizeof(t_player));
 	player(p);
-	while (42)	
+	while (42)
 	{
 		ted = malloc(sizeof(t_fill));
 		ted->player = p->player;
@@ -35,7 +35,7 @@ int			main(void)
 		size(ted);
 		board(ted);
 		if (ez_win(ted) == 0)
-			break;
+			break ;
 		freeall(ted);
 		free(ted);
 	}
