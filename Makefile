@@ -16,7 +16,7 @@ INCLUDES = ./includes/
 RM = /bin/rm -f
 
 FILES = filler ezwin board ft_put_coordinates p_atoi player size freeall \
-			valid_placement
+			valid_placement leak
 CFILES = $(patsubst %, $(SRCS_DIR)%.c, $(FILES))
 OFILES = $(patsubst %, %.o, $(FILES))
 CFLAGS = -Wall -Wextra -Werror

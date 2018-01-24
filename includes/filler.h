@@ -18,6 +18,7 @@
 ** To obtain negative coordinates, you'll have to keep track of pos on map,
 ** coordinates to get said position, and the map counter as well. 
 */
+
 typedef struct			s_maptemp
 {
 	int					map_x;
@@ -58,4 +59,5 @@ int						valid_placement(t_fill *ted, t_maptemp *h);
 void					ft_put_coordinates(t_fill *ted);
 int						ez_win(t_fill *ted);
 void    				freeall(t_fill *ted);
+void					leak_token(t_fill *ted, int enemy_x, int enemy_y, int *tempdist);
 #endif

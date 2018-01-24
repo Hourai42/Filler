@@ -21,8 +21,6 @@ static int	token_checker(t_fill *ted, t_maptemp *h, int token_x, int token_y)
 	{
 		h->norm_x = h->map_x - token_x;
 		h->norm_y = h->map_y - token_y;
-		h->starposx = h->norm_x + token_x;
-		h->starposy = h->norm_y + token_y;
 	}
 	x = h->norm_x + token_x;
 	y = h->norm_y + token_y;

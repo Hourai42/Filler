@@ -12,17 +12,7 @@
 
 #include "filler.h"
 
-static void		calc_dist(t_maptemp *h, int enemy_x, int enemy_y, int *tempdist)
-{
-	int			tmp;
-
-	tmp = ((h->starposx - enemy_x) * (h->starposx - enemy_x)) +
-	((h->starposy - enemy_y) * (h->starposy - enemy_y));
-	if (tmp < *tempdist)
-		*tempdist = tmp;
-}
-
-static int		closest_distance(t_fill *ted, t_maptemp *h)
+static int		closest_distance(t_fill *ted)
 {
 	int			i;
 	int			n;
@@ -37,7 +27,7 @@ static int		closest_distance(t_fill *ted, t_maptemp *h)
 		{
 			if (ted->map[n][i] == ted->enemy ||
 			ted->map[n][i] == ted->enemy - 32)
-				calc_dist(h, i, n, &tempdistance);
+				leak_token(ted, i, n, &tempdistance);
 			i++;
 		}
 		i = 0;
@@ -54,11 +44,11 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 	{
 		ted->x = h->norm_x;
 		ted->y = h->norm_y;
-		ted->distance = closest_distance(ted, h);
+		ted->distance = closest_distance(ted);
 	}
 	else
 	{
-		tmp = closest_distance(ted, h);
+		tmp = closest_distance(ted);
 		if (tmp < ted->distance)
 		{
 			ted->x = h->norm_x;
