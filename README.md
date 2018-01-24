@@ -29,3 +29,5 @@ The issue with read/GNL and stdin is that you're done reading a file, GNL will r
 Complete. The issue is now that if you want a good Filler instead an okay one, you'll need to change the way you're handling matters. Essentially, it'll be parsing the token first and superimposing it onto the map to obtain negative coordinates, and getting a much better gauge of distance. 
 
 Well, that's a slighty better fillit. It can now handle negative coordinates and the judge of distance is far superior-- but I still think I can make it a little bit better by only choosing the minimum distance choice. I guess I'll do that and head to sleep-- Fillit in two days isn't terribly bad. 
+
+Alright, fuckin' nice. Now that negative coordinates and the heuristic is far improved, I should have a good shot at this. The heuristic now calculates the position of every single asterisk, and picks the one with the lowest distance as a representative. This way, you can always get the choice with the lowest distance. 
