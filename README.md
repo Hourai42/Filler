@@ -24,3 +24,6 @@ Then after, fork the project and merge with yours when you're ready.
 This might be pretty ugly as you're just going to Frankenstein up a 10 minute solution. 
 
 The issue with read/GNL and stdin is that you're done reading a file, GNL will return a success then read one more time for the "finish read". But if that happens and it's stdin, it'll simply wait for the next input. That's the reason why they include the row/col of the map and every single piece. 
+-------------------------------------------------------------------------
+
+Complete. The issue is now that if you want a good Filler instead an okay one, you'll need to change the way you're handling matters. Essentially, it'll be parsing the token first and superimposing it onto the map to obtain negative coordinates, and getting a much better gauge of distance. 
