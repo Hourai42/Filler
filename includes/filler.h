@@ -38,11 +38,18 @@ typedef struct			s_fill
 	struct s_maptemp	*ptr;
 }						t_fill;
 
+typedef struct			s_player
+{
+	char				player;
+	char				enemy;
+}						t_player;
 int						main(void);
 int						p_atoi(char **line);
-void					board(int fd, t_fill *ted);
-void					player_and_size(int fd, t_fill *ted);
+void					board(t_fill *ted);
+void					player(t_player *p);
+void					size(t_fill *ted);
 int						valid_placement(t_fill *ted, t_maptemp *h);
 void					ft_put_coordinates(t_fill *ted);
-void					ez_win(t_fill *ted);
+int						ez_win(t_fill *ted);
+void    				freeall(t_fill *ted);
 #endif

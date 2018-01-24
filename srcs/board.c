@@ -18,24 +18,23 @@ static void	set_token(char *line, t_fill *ted, int tokencol)
 	int		i;
 
 	i = 0;
-	if (*line != '\0')
+	row = malloc(sizeof(char) * (tokencol + 1));
+	while (i < tokencol)
 	{
-		row = malloc(sizeof(char) * (tokencol + 1));
-		while (i < tokencol)
-		{
-			row[i] = line[i];
-			i++;
-		}
-		row[i] = '\0';
-		ted->token[ted->distance++] = row;
+		row[i] = line[i];
+		i++;
 	}
+	row[i] = '\0';
+	ted->token[ted->distance++] = row;
 }
 
-static void	token(char *line, t_fill *ted, int fd)
+static void	token(char *line, t_fill *ted)
 {
 	int		tokenrow;
 	int		tokencol;
+	int		i;
 
+	i = 0;
 	ted->distance = 0;
 	while (!(*line >= '0' && *line <= '9'))
 		line++;
@@ -43,8 +42,12 @@ static void	token(char *line, t_fill *ted, int fd)
 	tokencol = p_atoi(&line);
 	ted->token = (char **)malloc(sizeof(char *) * (tokenrow + 1));
 	ted->token[tokenrow] = 0;
-	while (get_next_line(fd, &line) == 1)
+	while (i < tokenrow)
+	{
+		get_next_line(STDIN_FILENO, &line);
 		set_token(line, ted, tokencol);
+		i++;
+	}
 }
 
 static void	set_board(char *line, t_fill *ted)
@@ -69,7 +72,7 @@ static void	set_board(char *line, t_fill *ted)
 ** Bad practice, blah blah blah
 */
 
-void		board(int fd, t_fill *ted)
+void		board(t_fill *ted)
 {
 	char	*line;
 
@@ -79,9 +82,9 @@ void		board(int fd, t_fill *ted)
 	ted->map[ted->row] = 0;
 	while (line == 0 || ft_isdigit(line[0]) == 1)
 	{
-		get_next_line(fd, &line);
+		get_next_line(STDIN_FILENO, &line);
 		if (line[0] == 'P')
-			token(line, ted, fd);
+			token(line, ted);
 		else
 			set_board(line, ted);
 	}

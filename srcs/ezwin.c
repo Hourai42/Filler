@@ -84,7 +84,7 @@ static void		pls_win(t_fill *ted, int map_x, int map_y)
 ** A distance of zero means none of the pieces can be placed.
 */
 
-void			ez_win(t_fill *ted)
+int				ez_win(t_fill *ted)
 {
 	int			i;
 	int			n;
@@ -103,5 +103,9 @@ void			ez_win(t_fill *ted)
 		n++;
 	}
 	if (ted->distance != 0)
+	{
 		ft_put_coordinates(ted);
+		return (1);
+	}
+	return (0);
 }

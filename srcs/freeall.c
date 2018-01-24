@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_coordinates.c                               :+:      :+:    :+:   */
+/*   freeall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 09:53:19 by ttran             #+#    #+#             */
-/*   Updated: 2018/01/23 09:53:20 by ttran            ###   ########.fr       */
+/*   Created: 2018/01/23 21:32:39 by ttran             #+#    #+#             */
+/*   Updated: 2018/01/23 21:32:40 by ttran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	ft_put_coordinates(t_fill *ted)
+void    freeall(t_fill *ted)
 {
-	ft_putnbr(ted->y);
-	write(1, " ", 1);
-	ft_putnbr(ted->x);
-	write(1, "\n", 1);
+    int i;
+
+    i = 0;
+    free(ted->ptr);
+    while (ted->map[i])
+        free(ted->map[i++]);
+    free(ted->map);
+    i = 0;
+    while (ted->token[i])
+        free(ted->token[i++]);
+    free(ted->token);
 }
