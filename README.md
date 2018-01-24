@@ -20,3 +20,5 @@ would you stop after every single turn and wait for more input? The tricky part 
 This is much more tricky than you initially expected-- let's study other people's code and see how it's done. 
 
 Then after, fork the project and merge with yours when you're ready. 
+
+This might be pretty ugly as you're just going to Frankenstein up a 10 minute solution. 
