@@ -16,8 +16,8 @@ static void		calc_dist(t_maptemp *h, int enemy_x, int enemy_y, int *tempdist)
 {
 	int			tmp;
 
-	tmp = ((h->map_x - enemy_x) * (h->map_x - enemy_x)) +
-	((h->map_y - enemy_y) * (h->map_y - enemy_y));
+	tmp = ((h->starposx - enemy_x) * (h->starposx - enemy_x)) +
+	((h->starposy - enemy_y) * (h->starposy - enemy_y));
 	if (tmp < *tempdist)
 		*tempdist = tmp;
 }
@@ -52,8 +52,8 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 
 	if (ted->distance == 999999999)
 	{
-		ted->x = h->map_x;
-		ted->y = h->map_y;
+		ted->x = h->norm_x;
+		ted->y = h->norm_y;
 		ted->distance = closest_distance(ted, h);
 	}
 	else
@@ -61,8 +61,8 @@ static void		losing_alg(t_fill *ted, t_maptemp *h)
 		tmp = closest_distance(ted, h);
 		if (tmp < ted->distance)
 		{
-			ted->x = h->map_x;
-			ted->y = h->map_y;
+			ted->x = h->norm_x;
+			ted->y = h->norm_y;
 			ted->distance = tmp;
 		}
 	}

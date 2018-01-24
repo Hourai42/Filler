@@ -14,6 +14,10 @@
 # define FILLER_H
 # include <libft.h>
 
+/*
+** To obtain negative coordinates, you'll have to keep track of pos on map,
+** coordinates to get said position, and the map counter as well. 
+*/
 typedef struct			s_maptemp
 {
 	int					map_x;
@@ -21,6 +25,9 @@ typedef struct			s_maptemp
 	int					norm_x;
 	int					norm_y;
 	int					connection;
+	int					run;
+	int					starposx;
+	int					starposy;
 }						t_maptemp;
 
 typedef struct			s_fill
