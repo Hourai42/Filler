@@ -17,12 +17,6 @@ would you stop after every single turn and wait for more input? The tricky part 
 4. Create a function to free everything that needs to be freed. 
 5. Update the map, revise the token everytime, and do whatever needs to be done.
 
-This is much more tricky than you initially expected-- let's study other people's code and see how it's done. 
-
-Then after, fork the project and merge with yours when you're ready. 
-
-This might be pretty ugly as you're just going to Frankenstein up a 10 minute solution. 
-
 The issue with read/GNL and stdin is that you're done reading a file, GNL will return a success then read one more time for the "finish read". But if that happens and it's stdin, it'll simply wait for the next input. That's the reason why they include the row/col of the map and every single piece. 
 -------------------------------------------------------------------------
 
